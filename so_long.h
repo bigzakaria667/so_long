@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/12 16:55:25 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:18:36 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "functions/ft_printf/ft_printf.h"
 # include "functions/libft/libft.h"
-# include "functions/get_next_line/get_next_line.h"
 # include <unistd.h>    // Pour read, write, close
 # include <fcntl.h>     // Pour open et O_RDONLY
 # include <stdlib.h>    // Pour exit
@@ -23,19 +22,30 @@
 /*----------------  error.c  ---------------*/
 void	ft_error(char *s);
 
+/*----------------  matrice.c  ---------------*/
+int	ft_line(char **matrice);
+int	ft_bytes(char **matrice);
+int	ft_is_element(char *line);
+
 /*----------------  parsing.c  ---------------*/
 int	check_extension(char *s);
 void	instructions(char **argv);
 
 /*----------------  check_map.c  ---------------*/
-int	read_file(char **stockage);
+int	check_shape(char **matrice);
+int	read_file(char *s, char *stockage);
 int	check_map(char *s);
 
 /*----------------  set_matrice.c  ---------------*/
-int	put_into_matrice(char *stockage, char ***matrice);
+char	**put_into_matrice(char *stockage, char **matrice);
 int	bytes_counter(char *stockage);
 int	line_counter(char *stockage);
-int	set_matrice(char *stockage, char ***matrice);
+char	**set_matrice(char *stockage);
+
+/*----------------  check_data.c  ---------------*/
+int	check_arena(char **matrice);
+int	check_border(char **matrice);
+int	check_data(char **matrice);
 
 /*----------------  so_long.c  ---------------*/
 int	main(int argc, char **argv);

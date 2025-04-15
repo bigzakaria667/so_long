@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/04/12 16:59:12 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/04/15 16:21:12 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,19 +22,19 @@ CFLAGS		= -Wall -Wextra -Werror -g
 
 PRINTF        = ./functions/ft_printf
 LIBFT         = ./functions/libft
-IFLAGS        = -I $(PRINTF) -I $(LIBFT) -I functions/get_next_line
+IFLAGS        = -I $(PRINTF) -I $(LIBFT)
 LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -lft -lftprintf
 
 ###########################################
 ## SOURCES
 
 SRC_FILES	= so_long.c \
-		  management/parsing/parsing.c\
-		  management/parsing/check_map.c\
-		  management/parsing/set_matrice.c\
-		  management/utils/error.c \
-		  functions/get_next_line/get_next_line.c \
-		  functions/get_next_line/get_next_line_utils.c
+		  parsing/parsing.c\
+		  parsing/set_matrice.c\
+		  parsing/check_map.c\
+		  parsing/check_data.c \
+		  utils/error.c \
+		  utils/matrice.c
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 ###########################################
@@ -52,7 +52,7 @@ ${NAME} : ${OBJ_FILES}
 	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
 
 clean :
-	@rm -f ${OBJ_FILES} management/parsing/*.o management/utils/*.o function/get_next_line/*.o
+	@rm -f ${OBJ_FILES} parsing/*.o utils/*.o
 	@make -s clean -C $(PRINTF)
 	@make -s clean -C $(LIBFT)
 	@echo "🧹 Objects files deleted."

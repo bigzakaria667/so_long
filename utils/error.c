@@ -6,11 +6,11 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:13:33 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/12 16:59:37 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:44:19 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 void	ft_error(char *s)
 {

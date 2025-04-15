@@ -6,11 +6,11 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/12 17:00:05 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:44:38 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 int	check_extension(char *s)
 {
