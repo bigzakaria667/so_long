@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/15 16:18:36 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:39:31 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_error(char *s);
 int	ft_line(char **matrice);
 int	ft_bytes(char **matrice);
 int	ft_is_element(char *line);
+void	ft_count_element(char **matrice, int *c, int *e, int *p);
 
 /*----------------  parsing.c  ---------------*/
 int	check_extension(char *s);
