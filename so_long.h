@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/17 16:39:31 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:02:00 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ft_count_element(char **matrice, int *c, int *e, int *p);
 
 /*----------------  parsing.c  ---------------*/
 int	check_extension(char *s);
-void	instructions(char **argv);
+char	**parsing(char **argv);
 
 /*----------------  check_map.c  ---------------*/
 int	check_shape(char **matrice);
 int	read_file(char *s, char *stockage);
-int	check_map(char *s);
+char	**check_map(char *s);
 
 /*----------------  set_matrice.c  ---------------*/
 char	**put_into_matrice(char *stockage, char **matrice);
@@ -47,6 +47,9 @@ char	**set_matrice(char *stockage);
 int	check_arena(char **matrice);
 int	check_border(char **matrice);
 int	check_data(char **matrice);
+
+/*----------------  instructions.c  ---------------*/
+int	instructions(char **argv);
 
 /*----------------  so_long.c  ---------------*/
 int	main(int argc, char **argv);

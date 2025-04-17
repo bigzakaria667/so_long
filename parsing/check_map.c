@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/15 16:16:08 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:06:20 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ int	read_file(char *s, char *stockage)
 	return (0);
 }
 
-int	check_map(char *s)
+char	**check_map(char *s)
 {
 	char	stockage[8000];
 	char	**matrice;
 
 	if (read_file(s, stockage) == 1)
-		return (1);
+		return (NULL);
 	matrice = set_matrice(stockage);
 	if (matrice == NULL)
-		return (1);
+		return (NULL);
 	if (check_shape(matrice) == 1)
-		return (1);
+		return (NULL);
 	if (check_data(matrice) == 1)
-		return (1);
-	return (0);
+		return (NULL);
+	return (matrice);
 }

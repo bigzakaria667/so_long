@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/14 15:44:38 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:57:20 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,15 @@ int	check_extension(char *s)
 	return (0);
 }
 
-void	instructions(char **argv)
+char	**parsing(char **argv)
 {
+	char	**matrice;
+
 	if (check_extension(argv[1]) == 1)
 		ft_error("⚠️ Le fichier n'a pas l'extension .ber\n");
-	if (check_map(argv[1]))
+	matrice = check_map(argv[1]);
+	if (matrice == NULL)
 		ft_error("⚠️ La map n'est pas valide\n");
+
+	return (matrice);
 }
