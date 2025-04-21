@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/17 16:57:20 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:14:39 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ char	**parsing(char **argv)
 	matrice = check_map(argv[1]);
 	if (matrice == NULL)
 		ft_error("⚠️ La map n'est pas valide\n");
-
 	return (matrice);
 }
