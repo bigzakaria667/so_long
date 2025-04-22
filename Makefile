@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/04/21 21:43:49 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/04/22 19:13:33 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -lft -lftprintf
 ## SOURCES
 
 SRC_FILES	= so_long.c \
-		  instructions/instructions.c \
 		  parsing/parsing.c \
 		  parsing/set_matrice.c \
 		  parsing/check_map.c \
@@ -54,7 +53,7 @@ ${NAME} : ${OBJ_FILES}
 	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
 
 clean :
-	@rm -f ${OBJ_FILES} parsing/*.o utils/*.o instructions/*.o
+	@rm -f ${OBJ_FILES} parsing/*.o utils/*.o
 	@make -s clean -C $(PRINTF)
 	@make -s clean -C $(LIBFT)
 	@echo "🧹 Objects files deleted."

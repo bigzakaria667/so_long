@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/22 17:07:59 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:13:06 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ int	check_reachability(char **matrice);
 void	explore(char **matrice, int x, int y);
 int	check_playable(char **matrice);
 
-/*----------------  instructions.c  ---------------*/
-int	instructions(char **argv);
-
 /*----------------  so_long.c  ---------------*/
+int	instructions(char **argv);
 int	main(int argc, char **argv);
 
 #endif
