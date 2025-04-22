@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/17 17:02:00 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:07:59 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 void	ft_error(char *s);
 
 /*----------------  matrice.c  ---------------*/
+char	**ft_copy(char **matrice, char **copy);
 int	ft_line(char **matrice);
 int	ft_bytes(char **matrice);
 int	ft_is_element(char *line);
@@ -47,6 +48,11 @@ char	**set_matrice(char *stockage);
 int	check_arena(char **matrice);
 int	check_border(char **matrice);
 int	check_data(char **matrice);
+
+/*----------------  check_playable.c  ---------------*/
+int	check_reachability(char **matrice);
+void	explore(char **matrice, int x, int y);
+int	check_playable(char **matrice);
 
 /*----------------  instructions.c  ---------------*/
 int	instructions(char **argv);

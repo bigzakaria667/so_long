@@ -6,11 +6,44 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 23:19:51 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/17 16:37:00 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:06:16 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+char	**ft_copy(char **matrice, char **copy)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	copy = malloc (sizeof(char *) * (ft_line(matrice) + 1));
+	if (!copy)
+		return (NULL);
+	while (x < ft_line(matrice))
+	{
+		copy[x] = malloc (sizeof(char) * ft_bytes(matrice) + 1);
+		if (!copy[x])
+			return (NULL);
+		x++;
+	}
+	copy[ft_line(matrice)] = NULL;
+	x = 0;
+	while (matrice[x])
+	{
+		while (matrice[x][y])
+		{
+			copy[x][y] = matrice[x][y];
+			y++;
+		}
+		copy[x][y] = '\0';
+		y = 0;
+		x++;
+	}
+	return (copy);
+}
 
 int	ft_line(char **matrice)
 {

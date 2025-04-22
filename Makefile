@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/04/17 17:03:33 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/04/21 21:43:49 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 ## ARGUMENTS
 
 NAME 		= so_long
-CC		= gcc
+CC		= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 
 ###########################################
@@ -34,6 +34,7 @@ SRC_FILES	= so_long.c \
 		  parsing/set_matrice.c \
 		  parsing/check_map.c \
 		  parsing/check_data.c \
+		  parsing/check_playable.c \
 		  utils/error.c \
 		  utils/matrice.c
 OBJ_FILES	= $(SRC_FILES:.c=.o)
