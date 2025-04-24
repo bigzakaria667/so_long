@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/22 19:13:06 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:51:56 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "functions/ft_printf/ft_printf.h"
 # include "functions/libft/libft.h"
+# include "minilibx/mlx.h"
 # include <unistd.h>    // Pour read, write, close
 # include <fcntl.h>     // Pour open et O_RDONLY
 # include <stdlib.h>    // Pour exit
@@ -53,6 +54,10 @@ int	check_data(char **matrice);
 int	check_reachability(char **matrice);
 void	explore(char **matrice, int x, int y);
 int	check_playable(char **matrice);
+
+/*----------------  game_management.c  ---------------*/
+int	create_window(void *mlx, int width, int height, char *title);
+int	game_management(void);
 
 /*----------------  so_long.c  ---------------*/
 int	instructions(char **argv);

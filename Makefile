@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/04/22 19:13:33 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/04/23 16:48:23 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,16 @@ CFLAGS		= -Wall -Wextra -Werror -g
 
 PRINTF        = ./functions/ft_printf
 LIBFT         = ./functions/libft
-IFLAGS        = -I $(PRINTF) -I $(LIBFT)
-LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -lft -lftprintf
+MINILIBX      = ./minilibx
+
+IFLAGS        = -I $(PRINTF) -I $(LIBFT) -I $(MINILIBX)
+LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -L $(MINILIBX) -lft -lftprintf -lmlx -framework OpenGL -framework AppKit
 
 ###########################################
 ## SOURCES
 
 SRC_FILES	= so_long.c \
+		  game_management/game_management.c \
 		  parsing/parsing.c \
 		  parsing/set_matrice.c \
 		  parsing/check_map.c \
@@ -53,7 +56,7 @@ ${NAME} : ${OBJ_FILES}
 	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
 
 clean :
-	@rm -f ${OBJ_FILES} parsing/*.o utils/*.o
+	@rm -f ${OBJ_FILES} game_management/*.o parsing/*.o utils/*.o minilibx/*.o
 	@make -s clean -C $(PRINTF)
 	@make -s clean -C $(LIBFT)
 	@echo "🧹 Objects files deleted."
