@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 15:28:01 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/24 22:43:39 by zel-ghab         ###   ########.fr       */
+/*   Created: 2025/04/29 15:44:25 by zel-ghab          #+#    #+#             */
+/*   Updated: 2025/04/29 15:46:47 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-void	instructions(char **argv)
+int	get_map_width(char **matrice)
 {
-	char	**matrice;
+	int	widht;
 
-	matrice = parsing(argv);
-	game_management(matrice);
+	return (width);
 }
 
-int	main(int argc, char **argv)
+int	get_map_height(char **matrice)
 {
-	if (argc == 2)
-		instructions(argv);
-	else
-		return (1);
-	return (0);
+	int	height;
+
+
+	return (height);
 }

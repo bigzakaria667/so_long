@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/23 16:51:56 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:16:34 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,14 @@ void	explore(char **matrice, int x, int y);
 int	check_playable(char **matrice);
 
 /*----------------  game_management.c  ---------------*/
-int	create_window(void *mlx, int width, int height, char *title);
-int	game_management(void);
+int	generate_texture(char **matrice, void *mlx, void *window);
+void	render(char **matrice, void *mlx, void *window, void *type, char n);
+void	*load_image(void *mlx, char *filename);
+void	*create_window(void *mlx, int width, int height, char *title);
+void	game_management(char **matrice);
 
 /*----------------  so_long.c  ---------------*/
-int	instructions(char **argv);
+void	instructions(char **argv);
 int	main(int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/04/23 16:48:23 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/04/29 19:03:45 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ PRINTF        = ./functions/ft_printf
 LIBFT         = ./functions/libft
 MINILIBX      = ./minilibx
 
-IFLAGS        = -I $(PRINTF) -I $(LIBFT) -I $(MINILIBX)
-LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -L $(MINILIBX) -lft -lftprintf -lmlx -framework OpenGL -framework AppKit
+IFLAGS        = -I $(PRINTF) -I $(LIBFT) -I $(MINILIBX) -I .
+LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -L $(MINILIBX) -lft -lftprintf
 
 ###########################################
 ## SOURCES
@@ -49,11 +49,11 @@ all : ${NAME}
 ${NAME} : ${OBJ_FILES}
 	@make -s -C ${PRINTF}
 	@make -s -C ${LIBFT}
-	@${CC} ${CFLAGS} ${OBJ_FILES} ${LDFLAGS} -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJ_FILES} ${LDFLAGS} -o ${NAME} -lmlx -framework OpenGL -framework AppKit -L minilibx/
 	@echo "✅ Successful compiliation!"
 
 %.o : %.c
-	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
+	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@ -I minilibx/
 
 clean :
 	@rm -f ${OBJ_FILES} game_management/*.o parsing/*.o utils/*.o minilibx/*.o
