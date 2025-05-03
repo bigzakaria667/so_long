@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:29:21 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/03 18:52:13 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:03:24 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	render_collects(char **matrice, void *mlx, void *window, void **collects)
 		}
 		y++;
 	}
-
 }
 void	render(char **matrice, void *mlx, void *window, void *type, char n)
 {
