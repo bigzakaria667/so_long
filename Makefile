@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/05/12 22:48:52 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/05/12 23:27:13 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC		= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 
 ###########################################
-## LIBRAIRIES
+## LIBRARIES
 
 PRINTF        = ./functions/ft_printf
 LIBFT         = ./functions/libft
@@ -43,6 +43,7 @@ SRC_FILES	= so_long.c \
 		  utils/game.c \
 		  utils/matrice.c \
 		  utils/map.c
+
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 ###########################################
@@ -50,9 +51,11 @@ OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 UNAME_S := $(shell uname -s)
 
+# If OS is Linux
 ifeq ($(UNAME_S), Linux)
     OS = LINUX
     MLX_FLAGS = -lmlx -L minilibx/ -lXext -lX11 -lm -lz
+# If OS is macOS
 else
     OS = MAC
     MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -L minilibx/
@@ -64,12 +67,12 @@ endif
 all : ${NAME}
 
 ${NAME} : ${OBJ_FILES}
-	@echo "🛠️  Compilation des librairies..."
+	@echo "🛠️  Compiling libraries..."
 	@make -s -C ${PRINTF}
 	@make -s -C ${LIBFT}
 	@make -s -C ${MINILIBX}
 	@${CC} ${CFLAGS} ${OBJ_FILES} ${LDFLAGS} ${MLX_FLAGS} -o ${NAME}
-	@echo "✅ Compilation réussie pour $(OS) !"
+	@echo "✅ Compilation successful for $(OS)!"
 
 %.o : %.c
 	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
@@ -79,18 +82,18 @@ clean :
 	@make -s clean -C $(PRINTF)
 	@make -s clean -C $(LIBFT)
 	@make -s clean -C $(MINILIBX)
-	@echo "🧹 Fichiers objets supprimés."
+	@echo "🧹 Object files removed."
 
 fclean : clean
 	@make -s fclean -C $(LIBFT)
 	@make -s fclean -C $(PRINTF)
 	@rm -rf ${NAME}
-	@echo "🧹 Tout a été nettoyé."
+	@echo "🧹 Everything is cleaned."
 
 re : fclean all
 
 ###########################################
-## COMMANDES PERSONNALISÉES
+## CUSTOM COMMANDS
 
 linux:
 	@$(MAKE) fclean
@@ -101,4 +104,3 @@ mac:
 	@$(MAKE) all OS=MAC
 
 .PHONY: all clean fclean re linux mac
-
