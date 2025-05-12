@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/05/09 22:47:10 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/05/12 22:48:52 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,31 +46,59 @@ SRC_FILES	= so_long.c \
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 ###########################################
+## OS DETECTION
+
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S), Linux)
+    OS = LINUX
+    MLX_FLAGS = -lmlx -L minilibx/ -lXext -lX11 -lm -lz
+else
+    OS = MAC
+    MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -L minilibx/
+endif
+
+###########################################
 ## RULES
 
 all : ${NAME}
 
 ${NAME} : ${OBJ_FILES}
+	@echo "🛠️  Compilation des librairies..."
 	@make -s -C ${PRINTF}
 	@make -s -C ${LIBFT}
-	@${CC} ${CFLAGS} ${OBJ_FILES} ${LDFLAGS} -o ${NAME} -lmlx -framework OpenGL -framework AppKit -L minilibx/
-	@echo "✅ Successful compiliation!"
+	@make -s -C ${MINILIBX}
+	@${CC} ${CFLAGS} ${OBJ_FILES} ${LDFLAGS} ${MLX_FLAGS} -o ${NAME}
+	@echo "✅ Compilation réussie pour $(OS) !"
 
 %.o : %.c
-	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@ -I minilibx/
+	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
 
 clean :
-	@rm -f ${OBJ_FILES} game_management/*.o parsing/*.o utils/*.o minilibx/*.o
+	@rm -f ${OBJ_FILES} game_management/*.o parsing/*.o utils/*.o
 	@make -s clean -C $(PRINTF)
 	@make -s clean -C $(LIBFT)
-	@echo "🧹 Objects files deleted."
+	@make -s clean -C $(MINILIBX)
+	@echo "🧹 Fichiers objets supprimés."
 
 fclean : clean
 	@make -s fclean -C $(LIBFT)
 	@make -s fclean -C $(PRINTF)
 	@rm -rf ${NAME}
-	@echo "🧹 Reset all!"
+	@echo "🧹 Tout a été nettoyé."
 
 re : fclean all
 
-.PHONY: all clean fclean re
+###########################################
+## COMMANDES PERSONNALISÉES
+
+linux:
+	@$(MAKE) fclean
+	@$(MAKE) all OS=LINUX
+
+mac:
+	@$(MAKE) fclean
+	@$(MAKE) all OS=MAC
+
+.PHONY: all clean fclean re linux mac
+
