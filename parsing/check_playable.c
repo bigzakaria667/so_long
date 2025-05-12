@@ -33,8 +33,11 @@ int	check_reachability(char **matrice)
 
 void	explore(char **matrice, int x, int y)
 {
+
 	if (x < 0 || y < 0 || !matrice[x] || !matrice[x][y])
 		return;
+	if (matrice[x][y] == 'E')
+		matrice[x][y] = 'V';
 	if (matrice[x][y] != '1' && matrice[x][y] != 'V')
 	{
 		matrice[x][y] = 'V';

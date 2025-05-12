@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/05/03 18:47:39 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/05/09 22:47:10 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,16 @@ LDFLAGS       = -L $(PRINTF) -L $(LIBFT) -L $(MINILIBX) -lft -lftprintf
 SRC_FILES	= so_long.c \
 		  game_management/game_management.c \
 		  game_management/generate_texture.c \
+		  game_management/move_player.c \
 		  parsing/parsing.c \
 		  parsing/set_matrice.c \
 		  parsing/check_map.c \
 		  parsing/check_data.c \
 		  parsing/check_playable.c \
 		  utils/error.c \
-		  utils/matrice.c
+		  utils/game.c \
+		  utils/matrice.c \
+		  utils/map.c
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 ###########################################

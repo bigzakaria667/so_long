@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/03 18:47:01 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/12 21:01:02 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,25 @@
 # include <fcntl.h>     // Pour open et O_RDONLY
 # include <stdlib.h>    // Pour exit
 
-/*----------------  error.c  ---------------*/
-void	ft_error(char *s);
+typedef struct s_pos
+{
+	int x;
+	int y;
+}	t_pos;
+
+typedef struct s_game 
+{
+	t_pos	player;
+	void	*mlx;
+	void	*window;
+	char	**map;
+	int	collect_count;
+	int	collect_total;
+}	t_game;
+
+/*----------------  so_long.c  ---------------*/
+void	instructions(char **argv);
+int	main(int argc, char **argv);
 
 /*----------------  matrice.c  ---------------*/
 char	**ft_copy(char **matrice, char **copy);
@@ -29,6 +46,18 @@ int	ft_line(char **matrice);
 int	ft_bytes(char **matrice);
 int	ft_is_element(char *line);
 void	ft_count_element(char **matrice, int *c, int *e, int *p);
+
+/*----------------  game.c  ---------------*/
+t_pos	find_player(char **matrice);
+
+/*----------------  error.c  ---------------*/
+void	ft_error(char *s);
+
+/*----------------  map.c  ---------------*/
+void	*put_collect(char collect, void **collects);
+void	rename_collect(char **matrice, int i, int x, int y);
+char	**fix_collect(char **matrice);
+int	count_collect(char **matrice);
 
 /*----------------  parsing.c  ---------------*/
 int	check_extension(char *s);
@@ -61,12 +90,12 @@ void	render(char **matrice, void *mlx, void *window, void *type, char n);
 void	*load_image(void *mlx, char *filename);
 int	generate_texture(char **matrice, void *mlx, void *window);
 
+/*----------------  move_player.c  ---------------*/
+void	move_player(t_game *game, int dx, int dy);
+
 /*----------------  game_management.c  ---------------*/
+int	key_hook(int keycode, t_game *game);
 void	*create_window(void *mlx, int width, int height, char *title);
 void	game_management(char **matrice);
-
-/*----------------  so_long.c  ---------------*/
-void	instructions(char **argv);
-int	main(int argc, char **argv);
 
 #endif

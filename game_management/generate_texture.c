@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:29:21 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/03 19:03:24 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:18:51 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	render_collects(char **matrice, void *mlx, void *window, void **collects)
 		x = 0;
 		while (matrice[y][x])
 		{
-			if (matrice[y][x] == 'C')
+			if (matrice[y][x] == '!' || matrice[y][x] == '@' || matrice[y][x] == '#' || matrice[y][x] == '$')
 			{
-				mlx_put_image_to_window(mlx, window, collects[i], x * 32, y * 32);
 				i++;
+				mlx_put_image_to_window(mlx, window, put_collect(matrice[y][x], collects), x * 32, y * 32);
 				if (i == 3)
-					i = 0;
+					i = -1;
 			}
 			x++;
 		}
@@ -75,7 +75,7 @@ int	generate_texture(char **matrice, void *mlx, void *window)
 	void	*exit;
 	void	*player;
 	void	*collects[4];
-		
+
 	ground = load_image(mlx, "assets/enderstone.xpm");
 	wall = load_image(mlx, "assets/sky.xpm");
 	exit = load_image(mlx, "assets/enderportal.xpm");
