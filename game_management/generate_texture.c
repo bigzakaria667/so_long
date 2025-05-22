@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:29:21 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/12 18:18:51 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/22 22:32:52 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,28 +68,22 @@ void	*load_image(void *mlx, char *filename)
 	return (image);
 }
 
-int	generate_texture(char **matrice, void *mlx, void *window)
+int	generate_texture(t_game *game)
 {
-	void	*ground;
-	void	*wall;
-	void	*exit;
-	void	*player;
-	void	*collects[4];
-
-	ground = load_image(mlx, "assets/enderstone.xpm");
-	wall = load_image(mlx, "assets/sky.xpm");
-	exit = load_image(mlx, "assets/enderportal.xpm");
-	player = load_image(mlx, "assets/steve.xpm");
-	collects[0] = load_image(mlx, "assets/collectibles/sword.xpm");
-	collects[1] = load_image(mlx, "assets/collectibles/pickaxe.xpm");
-	collects[2] = load_image(mlx, "assets/collectibles/chest.xpm");
-	collects[3] = load_image(mlx, "assets/collectibles/bow.xpm");
-	if (!ground || !wall || !exit || !*collects || !player)
+	game->textures.ground = load_image(game->mlx, "assets/enderstone.xpm");
+	game->textures.wall = load_image(game->mlx, "assets/sky.xpm");
+	game->textures.exit = load_image(game->mlx, "assets/enderportal.xpm");
+	game->textures.player = load_image(game->mlx, "assets/steve.xpm");
+	game->textures.collects[0] = load_image(game->mlx, "assets/collectibles/sword.xpm");
+	game->textures.collects[1] = load_image(game->mlx, "assets/collectibles/pickaxe.xpm");
+	game->textures.collects[2] = load_image(game->mlx, "assets/collectibles/chest.xpm");
+	game->textures.collects[3] = load_image(game->mlx, "assets/collectibles/bow.xpm");
+	if (!game->textures.ground || !game->textures.wall || !game->textures.exit || !game->textures.collects[0] || !game->textures.player)
 		return (1);
-	render(matrice, mlx, window, ground, '0');
-	render(matrice, mlx, window, wall, '1');
-	render(matrice, mlx, window, exit, 'E');
-	render(matrice, mlx, window, player, 'P');
-	render_collects(matrice, mlx, window, collects);
+	render(game->map, game->mlx, game->window, game->textures.ground, '0');
+	render(game->map, game->mlx, game->window, game->textures.wall, '1');
+	render(game->map, game->mlx, game->window, game->textures.exit, 'E');
+	render(game->map, game->mlx, game->window, game->textures.player, 'P');
+	render_collects(game->map, game->mlx, game->window, game->textures.collects);
 	return (0);
 }

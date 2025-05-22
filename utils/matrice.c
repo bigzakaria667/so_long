@@ -19,14 +19,19 @@ char	**ft_copy(char **matrice, char **copy)
 
 	x = 0;
 	y = 0;
-	copy = malloc (sizeof(char *) * (ft_line(matrice) + 1));
+	copy = malloc(sizeof(char *) * (ft_line(matrice) + 1));
 	if (!copy)
 		return (NULL);
 	while (x < ft_line(matrice))
 	{
-		copy[x] = malloc (sizeof(char) * ft_bytes(matrice) + 1);
+		copy[x] = malloc(sizeof(char) * ft_bytes(matrice) + 1);
 		if (!copy[x])
+		{
+			while (--x >= 0)
+				free(copy[x]);
+			free(copy);
 			return (NULL);
+		}
 		x++;
 	}
 	copy[ft_line(matrice)] = NULL;

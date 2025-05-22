@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/21 17:07:06 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:36:51 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ char	**parsing(char **argv)
 		ft_error("⚠️ Le fichier n'a pas l'extension .ber\n");
 	matrice = check_map(argv[1]);
 	if (matrice == NULL)
-		ft_error("⚠️ La map n'est pas valide\n");
+		return (free_matrice(matrice), ft_error("⚠️ La map n'est pas valide\n"), NULL);
 	if (check_playable(matrice) == 1)
-		ft_error("⚠️ La map n'est pas jouable\n");
+		return (free_matrice(matrice), ft_error("⚠️ La map n'est pas jouable\n"), NULL);
 	return (matrice);
 }

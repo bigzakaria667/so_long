@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:29:17 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/12 21:00:07 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:07:07 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	move_player(t_game *game, int dx, int dy)
 	// MAJ DU PLAYER
 	game->player.x = new_x;
 	game->player.y = new_y;
-	// REGEN LA MAP
-	generate_texture(game->map, game->mlx, game->window);
+	// Mettre à jour uniquement les textures nécessaires
+	render(game->map, game->mlx, game->window, game->textures.ground, '0');
+	render(game->map, game->mlx, game->window, game->textures.wall, '1');
+	render(game->map, game->mlx, game->window, game->textures.exit, 'E');
+	render(game->map, game->mlx, game->window, game->textures.player, 'P');
+	render_collects(game->map, game->mlx, game->window, game->textures.collects);
 }

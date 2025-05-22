@@ -53,6 +53,7 @@ char	**check_map(char *s)
 	char	stockage[8000];
 	char	**matrice;
 
+	matrice = NULL;
 	if (read_file(s, stockage) == 1)
 		return (NULL);
 	matrice = set_matrice(stockage);

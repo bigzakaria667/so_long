@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/05/12 23:27:13 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/05/21 16:37:30 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRC_FILES	= so_long.c \
 		  utils/error.c \
 		  utils/game.c \
 		  utils/matrice.c \
-		  utils/map.c
+		  utils/map.c \
+		  utils/destroy.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
