@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 17:53:01 by zel-ghab          #+#    #+#              #
-#    Updated: 2025/06/02 18:32:58 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/06/02 18:46:24 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ SRC_FILES	= so_long.c \
 		  game_management/generate_texture.c \
 		  game_management/move_player.c \
 		  parsing/parsing.c \
-		  parsing/set_matrice.c \
 		  parsing/check_map.c \
 		  parsing/check_data.c \
 		  parsing/check_playable.c \

@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 22:44:28 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/12 21:17:37 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:03:44 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	rename_collect(char **matrice, int i, int x, int y)
 		matrice[y][x] = '!';
 	if (i == 1)
 		matrice[y][x] = '@';
-	if (i == 2)				
-		matrice[y][x] = '#';		
+	if (i == 2)
+		matrice[y][x] = '#';
 	if (i == 3)
 		matrice[y][x] = '$';
 }

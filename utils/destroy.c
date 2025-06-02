@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:14:42 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/31 21:10:22 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:03:28 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_texture(t_game *game)
 void	destroy(t_game *game)
 {
 	if (!game)
-		return;
+		return ;
 	free_texture(game);
 	free_game(game);
 	free_matrice(&game->map);

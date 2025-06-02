@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:13:33 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/20 23:20:12 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:02:12 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(char *s)
 {
-	write (2, "Error\n", 6);
+	write(2, "Error\n", 6);
 	printf("%s", s);
 	exit(1);
 }

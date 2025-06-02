@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/06/02 18:34:28 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:55:42 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_game
 	char		**map;
 	int			collect_count;
 	int			collect_total;
+	long long	total_moves;
 }	t_game;
 
 /*----------------  so_long.c  ---------------*/
@@ -88,12 +89,6 @@ int		count_bytes(char *s);
 int		read_files(char *s, char **stockage, int bytes);
 char	**check_map(char *s);
 
-/*----------------  set_matrice.c  ---------------*/
-char	**put_into_matrice(char *stockage, char **matrice);
-int		bytes_counter(char *stockage);
-int		line_counter(char *stockage);
-char	**set_matrice(char *stockage);
-
 /*----------------  check_data.c  ---------------*/
 int		check_arena(char **matrice);
 int		check_border(char **matrice);
@@ -115,6 +110,7 @@ int		generate_texture(t_game *game);
 void	move_player(t_game *game, int dx, int dy);
 
 /*----------------  game_management.c  ---------------*/
+int		close_window(t_game *game);
 int		key_hook(int keycode, t_game *game);
 void	*create_window(void *mlx, int width, int height, char *title);
 void	game_management(char **matrice);

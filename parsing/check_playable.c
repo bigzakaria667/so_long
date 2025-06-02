@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:31:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/31 20:21:01 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 19:36:26 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,15 @@ int	check_reachability(char **matrice)
 		if (matrice[x][y] == 'C' || matrice[x][y] == 'E')
 			return (1);
 		y = 0;
-		x++;	
+		x++;
 	}
 	return (0);
 }
 
 void	explore(char **matrice, int x, int y)
 {
-
 	if (x < 0 || y < 0 || !matrice[x] || !matrice[x][y])
-		return;
+		return ;
 	if (matrice[x][y] == 'E')
 		matrice[x][y] = 'V';
 	if (matrice[x][y] != '1' && matrice[x][y] != 'V')
@@ -50,27 +49,24 @@ void	explore(char **matrice, int x, int y)
 
 int	check_playable(char **matrice)
 {
-	int	x;
-	int	y;
 	char	**copy;
+	int		x;
+	int		y;
 
 	x = 0;
 	y = 0;
 	copy = NULL;
-	// FIND "P"
 	while (matrice[x])
 	{
 		while (matrice[x][y] != 'P' && matrice[x][y])
 			y++;
 		if (matrice[x][y] == 'P')
-			break;
+			break ;
 		y = 0;
 		x++;
 	}
-	// BACKTRACKING
 	copy = ft_copy(matrice, copy);
 	explore(copy, x, y);
-	// LAST CHECK
 	if (check_reachability(copy) == 1)
 		return (free_matrice(&copy), 1);
 	return (free_matrice(&copy), 0);

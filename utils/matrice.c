@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 23:19:51 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/31 20:47:17 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:02:45 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	ft_bytes(char **matrice)
 
 int	ft_is_element(char *line)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*elements;
 
 	i = 0;

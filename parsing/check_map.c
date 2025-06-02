@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/31 21:41:39 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 19:28:29 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_shape(char **matrice)
 	while (matrice[i + 1])
 	{
 		if (ft_strlen(matrice[i]) != ft_strlen(matrice[i + 1]))
-				return (1);
+			return (1);
 		i++;
 	}
 	return (0);
@@ -30,11 +30,9 @@ int	read_file(char *s, char *stockage, int bytes)
 {
 	int	fd;
 
-	// OUVRIR LE FICHIER
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	// EXTRAIRE LA MAP
 	if (read(fd, stockage, bytes) == -1)
 		return (1);
 	stockage[bytes] = '\0';
@@ -43,19 +41,24 @@ int	read_file(char *s, char *stockage, int bytes)
 
 int	count_bytes(char *s)
 {
-	int	fd;
-	int	bytes_read;
-	int	count;
 	char	c;
+	int		fd;
+	int		bytes_read;
+	int		count;
 
-	count = 0;
-	// OUVRIR LE FICHIER
+	if (!s)
+		return (1);
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	// EXTRAIRE LA MAP
-	while ((bytes_read = read(fd, &c, 1)) > 0)
-		count++;
+	count = 0;
+	bytes_read = 1;
+	while (bytes_read > 0)
+	{
+		bytes_read = read(fd, &c, 1);
+		if (bytes_read > 0)
+			count++;
+	}
 	return (close(fd), count);
 }
 
@@ -63,14 +66,18 @@ char	**check_map(char *s)
 {
 	char	*stockage;
 	char	**matrice;
+	int		bytes;
 
+	stockage = NULL;
 	matrice = NULL;
-	stockage = malloc(sizeof(char) * count_bytes(s) + 1);
+	bytes = count_bytes(s);
+	if (bytes <= 0)
+		return (NULL);
+	stockage = malloc(sizeof(char) * bytes + 1);
 	if (!stockage)
 		return (NULL);
-	if (read_file(s, stockage, count_bytes(s)))
+	if (read_file(s, stockage, bytes))
 		return (free(stockage), NULL);
-	//matrice = set_matrice(stockage);
 	matrice = ft_split(stockage, '\n');
 	if (!matrice || check_shape(matrice) || check_data(matrice))
 		return (free(stockage), free_matrice(&matrice), NULL);

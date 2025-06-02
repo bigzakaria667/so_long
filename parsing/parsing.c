@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:31:16 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/31 20:24:23 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 19:41:44 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	check_extension(char *s)
 {
-	int	i;
-	int	j;
-	int	len;
 	char	*ber;
-	
+	int		i;
+	int		j;
+	int		len;
+
 	len = ft_strlen(s);
 	if (len < 5)
 		return (1);
 	ber = ".ber";
 	i = len - 4;
 	j = 0;
-	while (s[i] == ber[j] && s[i]) 
+	while ((s[i] == ber[j]) && s[i])
 	{
 		i++;
 		j++;
@@ -43,8 +43,10 @@ char	**parsing(char **argv)
 		ft_error("⚠️ Le fichier n'a pas l'extension .ber\n");
 	matrice = check_map(argv[1]);
 	if (matrice == NULL)
-		return (free_matrice(&matrice), ft_error("⚠️ La map n'est pas valide\n"), NULL);
+		return (free_matrice(&matrice), \
+			ft_error("⚠️ La map n'est pas valide\n"), NULL);
 	if (check_playable(matrice) == 1)
-		return (free_matrice(&matrice), ft_error("⚠️ La map n'est pas jouable\n"), NULL);
+		return (free_matrice(&matrice), \
+			ft_error("⚠️ La map n'est pas jouable\n"), NULL);
 	return (matrice);
 }
