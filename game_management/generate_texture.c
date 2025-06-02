@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:29:21 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/06/01 23:24:20 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:30:08 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ void	render_collects(char **matrice, void *mlx, void *window, void **collects)
 		y++;
 	}
 }
-void	render(char **matrice, void *mlx, void *window, void *type, char n)
+void	render(t_game *game, void *type, char n)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (matrice[y])
+	while (game->map[y])
 	{
 		x = 0;
-		while (matrice[y][x])
+		while (game->map[y][x])
 		{
-			if (matrice[y][x] == n)
-				mlx_put_image_to_window(mlx, window, type, x * 32, y * 32);
+			if (game->map[y][x] == n)
+				mlx_put_image_to_window(game->mlx, game->window, type, x * 32, y * 32);
 			x++;
 		}
 		y++;
@@ -83,10 +83,10 @@ int	generate_texture(t_game *game)
 			|| !game->textures.collects[2] || !game->textures.collects[3]
 			|| !game->textures.player)
 		return (1);
-	render(game->map, game->mlx, game->window, game->textures.ground, '0');
-	render(game->map, game->mlx, game->window, game->textures.wall, '1');
-	render(game->map, game->mlx, game->window, game->textures.exit, 'E');
-	render(game->map, game->mlx, game->window, game->textures.player, 'P');
+	render(game, game->textures.ground, '0');
+	render(game, game->textures.wall, '1');
+	render(game, game->textures.exit, 'E');
+	render(game, game->textures.player, 'P');
 	render_collects(game->map, game->mlx, game->window, game->textures.collects);
 	return (0);
 }
