@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:05:09 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/04 16:55:01 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/31 21:42:03 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	**ft_word(char **split, char const *s, char c)
 	i = 0;
 	index = 0;
 	nb_char = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		if (s[i] != c)
 			nb_char++;
@@ -77,7 +77,7 @@ static size_t	ft_countstring(char const *s, char c)
 
 	i = 0;
 	nb_string = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		if (s[i] != c && (i == 0 || s[i - 1] == c))
 			nb_string++;

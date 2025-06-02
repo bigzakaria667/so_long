@@ -6,35 +6,34 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:14:42 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/22 22:36:16 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/31 21:10:22 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	free_matrice(char **matrice)
+void	free_matrice(char ***matrice)
 {
 	int	i;
 
 	i = 0;
-	while (matrice[i])
+	while ((*matrice) && (*matrice)[i])
 	{
-		free(matrice[i]);
+		free((*matrice)[i]);
+		(*matrice)[i] = NULL;
 		i++;
 	}
-	free(matrice);
+	free(*matrice);
+	*matrice = NULL;
 }
 
 void	free_game(t_game *game)
 {
 	if (game->window)
 		mlx_destroy_window(game->mlx, game->window);
-#ifdef __linux__
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
-#endif
 	free(game->mlx);
-	free_matrice(game->map);
 }
 
 void	free_texture(t_game *game)
@@ -64,4 +63,5 @@ void	destroy(t_game *game)
 		return;
 	free_texture(game);
 	free_game(game);
+	free_matrice(&game->map);
 }

@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:24:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/21 16:45:50 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/31 20:22:05 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	free_copy(char **copy);
 t_pos	find_player(char **matrice);
 
 /*----------------  destroy.c  ---------------*/
-void	free_matrice(char **matrice);
+void	free_matrice(char ***matrice);
 void	free_game(t_game *game);
 void	free_texture(t_game *game);
 void	destroy(t_game *game);
@@ -84,7 +84,8 @@ char	**parsing(char **argv);
 
 /*----------------  check_map.c  ---------------*/
 int	check_shape(char **matrice);
-int	read_file(char *s, char *stockage);
+int	count_bytes(char *s);
+int	read_files(char *s, char **stockage, int bytes);
 char	**check_map(char *s);
 
 /*----------------  set_matrice.c  ---------------*/

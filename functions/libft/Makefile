@@ -6,7 +6,7 @@
 #    By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/28 20:50:20 by zel-ghab          #+#    #+#              #
-#    Updated: 2024/11/20 20:32:17 by zel-ghab         ###   ########.fr        #
+#    Updated: 2025/05/31 21:29:25 by zel-ghab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRC = ft_atoi.c \
 
 OBJ = $(SRC:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 AR = @ar -rc
 
 all : $(NAME)

@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:31:25 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/04/22 18:01:14 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/31 20:21:01 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	check_playable(char **matrice)
 	explore(copy, x, y);
 	// LAST CHECK
 	if (check_reachability(copy) == 1)
-		return (1);
-	return (0);
+		return (free_matrice(&copy), 1);
+	return (free_matrice(&copy), 0);
 }

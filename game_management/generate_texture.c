@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:29:21 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/22 22:32:52 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/01 23:24:20 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ int	generate_texture(t_game *game)
 	game->textures.collects[1] = load_image(game->mlx, "assets/collectibles/pickaxe.xpm");
 	game->textures.collects[2] = load_image(game->mlx, "assets/collectibles/chest.xpm");
 	game->textures.collects[3] = load_image(game->mlx, "assets/collectibles/bow.xpm");
-	if (!game->textures.ground || !game->textures.wall || !game->textures.exit || !game->textures.collects[0] || !game->textures.player)
+	if (!game->textures.ground || !game->textures.wall || !game->textures.exit
+			|| !game->textures.collects[0] || !game->textures.collects[1]
+			|| !game->textures.collects[2] || !game->textures.collects[3]
+			|| !game->textures.player)
 		return (1);
 	render(game->map, game->mlx, game->window, game->textures.ground, '0');
 	render(game->map, game->mlx, game->window, game->textures.wall, '1');

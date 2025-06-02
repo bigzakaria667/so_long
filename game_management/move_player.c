@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:29:17 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/05/20 20:07:07 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/05/31 20:30:39 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	move_player(t_game *game, int dx, int dy)
 	new_y = game->player.y + dy;
 	// EXIT
 	if (game->map[new_y][new_x] == 'E' && (game->collect_total == game->collect_count))
+	{
+		destroy(game);
 		exit(0);
+	}
 	// WALL
 	if (game->map[new_y][new_x] == '1' || game->map[new_y][new_x] == 'E')
 		return;
@@ -35,10 +38,7 @@ void	move_player(t_game *game, int dx, int dy)
 	// MAJ DU PLAYER
 	game->player.x = new_x;
 	game->player.y = new_y;
-	// Mettre à jour uniquement les textures nécessaires
-	render(game->map, game->mlx, game->window, game->textures.ground, '0');
-	render(game->map, game->mlx, game->window, game->textures.wall, '1');
-	render(game->map, game->mlx, game->window, game->textures.exit, 'E');
-	render(game->map, game->mlx, game->window, game->textures.player, 'P');
-	render_collects(game->map, game->mlx, game->window, game->textures.collects);
+	// REGEN MAP
+	free_texture(game);
+	generate_texture(game);
 }
