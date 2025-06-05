@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:32:36 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/06/02 21:47:05 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:45:40 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	game_management(char **matrice)
 
 	game.collect_total = count_collect(matrice);
 	game.collect_count = 0;
-	game.total_moves = 0;
+	game.total_moves = 1; 
 	game.map = fix_collect(matrice);
 	game.player = find_player(matrice);
 	game.mlx = mlx_init();

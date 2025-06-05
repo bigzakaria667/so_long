@@ -6,7 +6,7 @@
 /*   By: zel-ghab <zel-ghab@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:29:17 by zel-ghab          #+#    #+#             */
-/*   Updated: 2025/06/02 21:50:06 by zel-ghab         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:45:17 by zel-ghab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	move_player(t_game *game, int dx, int dy)
 	game->map[new_y][new_x] = 'P';
 	game->player.x = new_x;
 	game->player.y = new_y;
-	game->total_moves++;
-	ft_printf("🎮 Movements : %d\n", game->total_moves);
+	if (game->total_moves > 9223372036854775807)
+		game->total_moves = 0;
+	ft_printf("🎮 Movements : %d\n", game->total_moves++);
 	free_texture(game);
 	generate_texture(game);
 }
